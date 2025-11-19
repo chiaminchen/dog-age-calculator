@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>妙麗歲數計算機 - 狗狗年齡換算</title>
+    <meta name="description" content="輸入狗狗的出生日期，快速換算成人類年齡。">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <main class="calculator-card">
+            <header class="card-header">
+                <div class="icon-wrapper">
+                    🐶
+                </div>
+                <h1>妙麗歲數計算機</h1>
+                <p class="subtitle">看看您的毛小孩在人類世界幾歲了？</p>
+            </header>
+
+            <section class="input-section">
+                <label for="birthdate">狗狗的出生日期</label>
+                <div class="input-wrapper">
+                    <input type="date" id="birthdate" required>
+                </div>
+                <button id="calculate-btn" class="primary-btn">開始計算</button>
+            </section>
+
+            <section id="result-section" class="result-section hidden">
+                <div class="result-content">
+                    <p>妙麗現在大約 <span id="dog-age" class="highlight">0</span> 歲狗狗年齡，</p>
+                    <p>換算成人類年齡大約是 <span id="human-age" class="highlight">0</span> 歲。</p>
+                </div>
+                <div class="scientific-note">
+                    <h3>📚 科學小知識</h3>
+                    <p>此計算採用 2019 年加州大學聖地牙哥分校 (UCSD) 研究團隊提出的表觀遺傳時鐘公式：</p>
+                    <code class="formula">人類年齡 = 16 × ln(狗狗年齡) + 31</code>
+                    <p class="note-text">研究顯示，狗狗滿 1 歲時已相當於人類 31 歲！之後老化速度會逐漸趨緩。這比傳統的「乘以 7」更符合狗狗的生理變化。</p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>© 2025 妙麗歲數計算機</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

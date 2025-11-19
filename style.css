@@ -1,0 +1,235 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --background-gradient: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-main: #1f2937;
+    --text-secondary: #4b5563;
+    --border-radius: 24px;
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --font-main: 'Noto Sans TC', sans-serif;
+    --font-display: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--background-gradient);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.calculator-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    padding: 40px 32px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.calculator-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    margin-bottom: 32px;
+}
+
+.icon-wrapper {
+    font-size: 48px;
+    margin-bottom: 16px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+h1 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+label {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--text-main);
+    text-align: left;
+    margin-left: 4px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: var(--font-main);
+    color: var(--text-main);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    background: #f9fafb;
+}
+
+input[type="date"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    background: #fff;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    font-family: var(--font-main);
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+.result-section {
+    background: #f3f4f6;
+    border-radius: 16px;
+    padding: 24px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.result-section.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    position: absolute; /* Hide from flow but keep for transition logic if needed, or just use display: none logic via JS but CSS transitions are smoother with opacity/transform */
+    /* Actually, for smoother height animation, we might want to just hide opacity/visibility. 
+       But to keep it simple and robust: */
+    display: none; 
+}
+
+/* Override hidden for animation if we use JS to toggle class properly */
+.result-section.show {
+    display: block;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-content p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.result-content p:last-child {
+    margin-bottom: 24px;
+}
+
+.scientific-note {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.scientific-note h3 {
+    font-size: 14px;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.formula {
+    display: block;
+    background: rgba(255,255,255,0.5);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--text-main);
+    margin: 12px 0;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.note-text {
+    font-size: 13px !important;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 24px;
+    font-family: var(--font-display);
+}
+
+footer {
+    margin-top: 24px;
+    text-align: center;
+    color: rgba(31, 41, 55, 0.6);
+    font-size: 12px;
+}
+
+@media (max-width: 480px) {
+    .calculator-card {
+        padding: 32px 24px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+}
